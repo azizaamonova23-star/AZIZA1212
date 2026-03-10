@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML Animatsiya</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+background:black;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:Arial;
+color:white;
+}
+
+/* Neon qimirlovchi sarlavha */
+
+h1{
+font-size:50px;
+color:#00ffff;
+text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 40px #00ffff;
+animation:shake 2s infinite;
+}
+
+@keyframes shake{
+0%{transform:translateX(0)}
+25%{transform:translateX(-6px)}
+50%{transform:translateX(6px)}
+75%{transform:translateX(-6px)}
+100%{transform:translateX(0)}
+}
+
+/* 3D tugma */
+
+.button{
+margin-top:40px;
+padding:18px 40px;
+font-size:20px;
+background:#00ffff;
+color:black;
+border:none;
+border-radius:12px;
+cursor:pointer;
+box-shadow:0 8px #008b8b;
+transition:0.2s;
+}
+
+.button:active{
+transform:translateY(8px);
+box-shadow:0 0 #008b8b;
+}
+
+/* Yulduzlar */
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-100px);
+opacity:1;
+}
+100%{
+transform:translateY(100vh);
+opacity:0;
+}
+}
+
+/* Yurak */
+
+.heart{
+position:absolute;
+color:red;
+font-size:20px;
+animation:fly 2s linear forwards;
+}
+
+@keyframes fly{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-200px);
+opacity:0;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>HTML Animatsiya</h1>
+
+<button class="button" onclick="love()">Bos</button>
+
+<script>
+
+/* Yulduzlar */
+
+for(let i=0;i<80;i++){
+
+let star=document.createElement("div");
+star.className="star";
+
+star.style.left=Math.random()*100+"%";
+star.style.animationDuration=2+Math.random()*3+"s";
+star.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(star);
+
+}
+
+/* Yurak animatsiya */
+
+function love(){
+
+for(let i=0;i<10;i++){
+
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="?";
+
+heart.style.left=(window.innerWidth/2+Math.random()*100-50)+"px";
+heart.style.top=(window.innerHeight/2)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove()},2000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
